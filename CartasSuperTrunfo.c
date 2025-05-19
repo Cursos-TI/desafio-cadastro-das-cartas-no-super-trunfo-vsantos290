@@ -1,22 +1,65 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+// Estrutura que representa uma carta
+typedef struct {
+    char nome[50];
+    float area;
+    unsigned long int populacao;
+    double pib;
+    float densidade;
+    float pibPerCapita;
+} Carta;
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    Carta carta1, carta2;
+
+    printf("=== Cadastro das Cartas ===\n\n");
+
+    // Entrada da Carta 1
+    printf("---- Carta 1 ----\n");
+    printf("Nome: ");
+    scanf(" %[^\n]", carta1.nome);
+    printf("Área (em km²): ");
+    scanf("%f", &carta1.area);
+    printf("População: ");
+    scanf("%lu", &carta1.populacao);
+    printf("PIB (em reais): ");
+    scanf("%lf", &carta1.pib);
+
+    // Entrada da Carta 2
+    printf("\n---- Carta 2 ----\n");
+    printf("Nome: ");
+    scanf(" %[^\n]", carta2.nome);
+    printf("Área (em km²): ");
+    scanf("%f", &carta2.area);
+    printf("População: ");
+    scanf("%lu", &carta2.populacao);
+    printf("PIB (em reais): ");
+    scanf("%lf", &carta2.pib);
+
+    // Cálculos automáticos (sem if/else ou laços)
+    carta1.densidade = carta1.populacao / carta1.area;
+    carta2.densidade = carta2.populacao / carta2.area;
+
+    carta1.pibPerCapita = carta1.pib / carta1.populacao;
+    carta2.pibPerCapita = carta2.pib / carta2.populacao;
+
+    // Saída dos dados das duas cartas
+    printf("\n=== Atributos das Cartas ===\n");
+
+    printf("\n--- Carta 1: %s ---\n", carta1.nome);
+    printf("Área: %.2f km²\n", carta1.area);
+    printf("População: %lu\n", carta1.populacao);
+    printf("PIB: R$ %.2lf\n", carta1.pib);
+    printf("Densidade Populacional: %.2f hab/km²\n", carta1.densidade);
+    printf("PIB per Capita: R$ %.2f\n", carta1.pibPerCapita);
+
+    printf("\n--- Carta 2: %s ---\n", carta2.nome);
+    printf("Área: %.2f km²\n", carta2.area);
+    printf("População: %lu\n", carta2.populacao);
+    printf("PIB: R$ %.2lf\n", carta2.pib);
+    printf("Densidade Populacional: %.2f hab/km²\n", carta2.densidade);
+    printf("PIB per Capita: R$ %.2f\n", carta2.pibPerCapita);
 
     return 0;
 }
